@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+
+    <!-- 基础脚本 BEGIN-->
+    <script src="js/jquery/jquery-3.4.1.js"></script>
+    <script src="js/main.js" type="text/javascript" charset="UTF-8"></script>
+    <link href="css/main.css" rel='stylesheet' type='text/css' />
+    <!-- 基础脚本 END  -->
+    <link href="css/login/style.css" rel='stylesheet' type='text/css' />
+    <script src="js/login/login.js" type="text/javascript" charset="UTF-8"></script>
+
+</head>
+
+<body>
+    <script>
+        $(document).ready(function(c) {
+            $('.close').on('click', function(c) {
+                $('.login-form').fadeOut('slow', function(c) {
+                    $('.login-form').remove();
+                });
+            });
+        });
+    </script>
+    <!--SIGN IN-->
+    <h1>face-permission-cms</h1>
+    <div class="login-form">
+        <div class="close"></div>
+        <div class="head-info">
+            <label class="lbl-1"> </label>
+            <label class="lbl-2"> </label>
+            <label class="lbl-3"> </label>
+        </div>
+        <div class="clear"></div>
+        <!-- 登陆头像 -->
+        <div class="avtar">
+            <img src="images/login/avtar.png" />
+        </div>
+        <!-- 登陆表单 -->
+
+        <form>
+            <input type="text" name="userName" value="Admin123" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'LoginName/手机号/邮箱';}">
+
+            <div class="key">
+                <input type="password" name="password" value="Admin123" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+            </div>
+
+        </form>
+        <div class="signin">
+            <input type="submit" value="Login" onclick="login()">
+        </div>
+    </div>
+
+
+    <div class="copy-rights">
+        <p>Copyright &copy; 2015.Company name All rights reserved.More Templates
+            <a href="http://www.cssmoban.com/" target="_blank" title="模版之家">模版之家</a> </p>
+    </div>
+
+</body>
+
+</html>

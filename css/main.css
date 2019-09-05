@@ -1,0 +1,82 @@
+/*--close--*/
+
+.close {
+    background: url('../../images/login/close.png') no-repeat 0px 0px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    -webkit-transition: color 0.2s ease-in-out;
+    -moz-transition: color 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+}
+
+
+/*--/close--*/
+
+#selfAlter {
+    background-color: #76ff661f;
+    border: 1px solid #efff0045;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 99;
+    width: 221px;
+    height: 43px;
+    left: 55%;
+    /*FF IE7*/
+    top: 15%;
+    /*FF IE7*/
+    margin-left: -150px!important;
+    /*FF IE7 该值为本身宽的一半 */
+    margin-top: -60px!important;
+    /*FF IE7 该值为本身高的一半*/
+    margin-top: 0px;
+    position: fixed!important;
+    /*FF IE7*/
+    position: absolute;
+    /*IE6*/
+    /* _top : expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ?
+documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :
+document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2);  */
+}
+
+.btn {
+    font-weight: 320;
+    line-height: 0.5;
+    color: #e9eef1;
+    background-color: #ba4c32;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.alter_msg {
+    position: fixed;
+    z-index: 2000;
+    text-align: center;
+    border-radius: 9px;
+}
+
+#alter_msg_ok {
+    background-color: #fffac2;
+    border: solid 1px #dbd6a2;
+    color: #5e5c40;
+    /* background-image: url(../images/mainConsole/msg-ok.gif); */
+}
+
+#alter_msg_error {
+    background-color: #f3c598;
+    border: solid 1px #e8b084;
+    color: #ba4c32;
+    /* background-image: url(../images/mainConsole/msg-error.gif); */
+}
+
+#alter_msg_info {
+    font-size: large;
+    padding-top: 10px;
+}

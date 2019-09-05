@@ -1,0 +1,53 @@
+#register-close {
+    margin-left: 90%;
+    margin-top: -10px;
+}
+
+.user_register_req {
+    font-size: 16px;
+    padding: 10px 0px 14px 0px;
+    min-width: 80px;
+}
+
+.user_register_req_radio {
+    font-size: 17px;
+    padding: 10px 0px 0px 15px;
+}
+
+.user_register_req_checkbox {
+    font-size: 15px;
+    width: 120px;
+    padding: 5px 0px 0px 12px;
+}
+
+.register-but {
+    padding: 6px;
+    position: sticky;
+    left: 4px;
+    top: 314px;
+}
+
+.register-but-1 {
+    position: relative;
+    left: -765px;
+    top: 0px;
+}
+
+.from_role_div {
+    width: 360px;
+    padding-top: 4px;
+}
+
+.query-box-param {
+    min-width: 255px;
+    float: left;
+}
+
+.query-box-name {
+    width: 68px;
+}
+
+.query-box-but {
+    float: left;
+    padding: 3px 25px;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Free CSS template by ChocoTemplates.com</title>
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="../css/mainConsole/style.css" type="text/css" />
+    <link rel="stylesheet" href="../css/mainConsole/user.css" type="text/css" />
+
+    <!-- 基础脚本 BEGIN-->
+    <script src="../js/jquery/jquery-3.4.1.js"></script>
+    <script src="../js/jquery/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/jquery/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../css/jquery/jquery-ui-timepicker-addon.css" type="text/css" />
+    <script src="../js/jquery/timepicker/jquery-ui-timepicker-addon.js"></script>
+
+    <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="UTF-8"></script>
+    <link href="../css/main.css" rel='stylesheet' type='text/css' />
+    <!-- 基础脚本 END  -->
+    <script src="../js/mainConsole/mainConsole.js" type="text/javascript" charset="UTF-8"></script>
+    <script src="../js/mainConsole/user.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div class="shell">
+            <!-- Logo + Top Nav -->
+            <div id="top">
+                <h1><a href="#">face管理后台</a></h1>
+                <div id="top-navigation">
+                    你好， <a href="#"><strong id="login_nickName">徐益中</strong></a>
+                    <span>|</span>
+                    <a href="#">Profile Settings</a>
+                    <span>|</span>
+                    <a href="../index.html">退出</a>
+                </div>
+            </div>
+            <!-- End Logo + Top Nav -->
+
+            <!-- Main Nav 导航栏-->
+            <div id="navigation">
+                <ul>
+                    <li><a href="#" class="active"><span>用户模块</span></a></li>
+                    <li><a href="#"><span>New Articles</span></a></li>
+                    <li><a href="#"><span>User Management</span></a></li>
+                    <li><a href="#"><span>Photo Gallery</span></a></li>
+                    <li><a href="#"><span>Products</span></a></li>
+                    <li><a href="#"><span>Services Control</span></a></li>
+                </ul>
+            </div>
+            <!-- End Main Nav -->
+        </div>
+    </div>
+    <!-- End Header -->
+
+    <!-- Container 容器-->
+    <div id="container">
+        <div class="shell">
+
+            <!-- Small Nav -->
+            <div class="small-nav">
+                <a href="#">用户模块</a>
+                <span>&gt;</span> 用户查询
+            </div>
+            <!-- End Small Nav -->
+
+            <!-- Main 块状展示 -->
+            <div id="main">
+                <div class="cl">&nbsp;</div>
+
+                <!-- Sidebar 操作管理-->
+                <div id="sidebar">
+
+                    <!-- Box -->
+                    <div class="box">
+
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 class="left">操作管理</h2>
+                        </div>
+                        <!-- End Box Head-->
+
+                        <div class="box-content">
+                            <!-- 查询条件和按钮 -->
+                            <div class="query-box">
+                                <div class="query-box-param">
+                                    <label class="query-box-name">用户ID：</label>
+                                    <input type="text" class="query-box-val" id="query_uId" />
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">用户昵称：</label>
+                                    <input type="text" class="query-box-val" id="query_nickName" />
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">手机号</label>
+                                    <input type="text" class="query-box-val" id="query_mobilePhone" />
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">邮箱</label>
+                                    <input type="text" class="query-box-val" id="query_email" />
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">用户状态</label>
+                                    <select class="query-box-val" id="query_status">
+                                        <option value="" selected>全选</option>
+                                        <option value=0>未知</option>
+                                        <option value=1>有效</option>
+                                        <option value=2>无效</option>
+                                    </select>
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">用户账号</label>
+                                    <input type="text" class="query-box-val" id="query_loginName" />
+                                </div>
+                                <div class="query-box-param" id="query_type">
+                                    <label class="query-box-name">账号类型</label>
+                                    <select class="query-box-val">
+                                        <option value="" selected>全选</option>
+                                        <option value=0>游客</option>
+                                        <option value=1>普通</option>
+                                        <option value=2>VIP</option>
+                                        <option value=3>管理员</option>
+                                        <option value=4>root</option>
+                                    </select>
+                                </div>
+                                <div class="query-box-param">
+                                    <label class="query-box-name">注册时间起:</label>
+                                    <input type="datetime-local" id="query_startTime" value="2019-01-01T23:59:59" />
+                                    <label> ~</label>
+                                    <input type="datetime-local" id="query_endTime" value="2019-12-30T23:59:59" />
+                                </div>
+                                <!-- 查询接口 -->
+                                <div class="but query-box-but" style="padding: 6px">
+                                    <button type="button" class="btn" onclick="searchUsers()">查询用户</button>
+                                </div>
+
+                                <!-- <input type="submit" class="button" value="search"  /> -->
+                            </div>
+
+                            <!-- 添加用户 -->
+                            <div class="but register-but">
+                                <button type="button" class="btn register-but-1" data-toggle="modal" data-target="#myModal" onclick="modelHtml(0)">新增用户</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Box -->
+                </div>
+                <!-- End Sidebar -->
+
+
+                <!-- content  -->
+                <div id="content">
+
+                    <!-- Box 用户列表-->
+                    <div class="box">
+                        <!-- Box Head -->
+                        <div class="box-head">
+                            <h2 class="left">用户列表</h2>
+                        </div>
+                        <!-- End Box Head -->
+
+                        <!-- Table信息展示 -->
+                        <div class="table">
+                            <table id='table-users' width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <th width="13"><input type="checkbox" class="checkbox" /></th>
+                                    <th>序号</th>
+                                    <th>用户Id</th>
+                                    <th>昵称</th>
+                                    <th>登陆名</th>
+                                    <th>手机号</th>
+                                    <th>email</th>
+                                    <th>sex</th>
+                                    <th>状态</th>
+                                    <th>类型</th>
+                                    <th>等级</th>
+                                    <th>创建时间</th>
+                                    <th width="40" class="ac">操作</th>
+                                </tr>
+                            </table>
+                            <div class="checked_delete">
+                                <a href="#">删除☑️</a>
+                            </div>
+                            <!-- Pagging -->
+                            <div class="pagging">
+                                <div class="left">Showing 1-12 of 44</div>
+                                <div class="right">
+                                    <a href="#">Previous</a>
+                                    <a href="#">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">245</a>
+                                    <span>...</span>
+                                    <a href="#">Next</a>
+                                    <a href="#">View all</a>
+                                </div>
+                            </div>
+                            <!-- End Pagging -->
+
+                        </div>
+                        <!-- Table -->
+
+                    </div>
+                    <!-- End Box -->
+
+                    <!-- Box 用户注册/修改-->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" id="register-close" data-dismiss="modal" aria-label="Close"> </button>
+                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer form-action">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Box -->
+
+                </div>
+                <!-- End Content -->
+
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- Main -->
+        </div>
+    </div>
+    <!-- End Container -->
+
+</body>
+
+</html>
