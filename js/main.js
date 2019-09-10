@@ -1,4 +1,7 @@
-var HOST = "http://127.0.0.1:8080/";
+// var HOST = "http://192.168.1.129:8080/";
+var HOST = "http://121.40.124.14:8080/";
+//var HOST = returnCitySN["cip"] != null ? returnCitySN["cip"] : "http://127.0.0.1:8080/";
+
 
 $.ajaxSetup({
 
@@ -37,7 +40,7 @@ $.ajaxSetup({
         // errorMsg 可能为： "Not Found"、"Internal Server Error"等
         switch (jqXHR.status) {
             case (500):
-                selfAlter("服务器系统内部错误", 0);
+                selfAlter("请求地址异常", 0);
                 break;
             case (401):
                 selfAlter("未登录", 0);

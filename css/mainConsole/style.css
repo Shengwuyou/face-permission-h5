@@ -251,7 +251,96 @@ h3 a {
     width: 988px;
 }
 
-.table {}
+.table-box {
+    position: relative;
+    padding: 0 50px;
+}
+
+.table {
+    overflow: auto;
+    margin-bottom: 0px;
+}
+
+#table-users-id {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 54px;
+}
+
+#table-users {
+    width: 1180px;
+}
+
+#table-users-operate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 54px;
+}
+
+#tr_user_0 {
+    width: 19px;
+}
+
+#tr_user_1 {
+    width: 32px;
+    text-align: center;
+}
+
+#tr_user_2 {
+    text-align: center;
+    width: 185px;
+}
+
+#tr_user_3 {
+    text-align: center;
+    width: 99px;
+}
+
+#tr_user_4 {
+    text-align: center;
+    width: 115px;
+}
+
+#tr_user_5 {
+    text-align: center;
+    width: 105px;
+}
+
+#tr_user_6 {
+    text-align: center;
+    width: 220px;
+}
+
+#tr_user_7 {
+    text-align: center;
+    width: 35px;
+}
+
+#tr_user_8 {
+    text-align: center;
+    width: 35px;
+}
+
+#tr_user_9 {
+    text-align: center;
+    width: 35px;
+}
+
+#tr_user_10 {
+    text-align: center;
+    width: 35px;
+}
+
+#tr_user_11 {
+    text-align: center;
+    width: 180px;
+}
+
+#tr_user_12 {
+    width: 30px;
+}
 
 .table th {
     background: #fffdfa url(../../images/mainConsole/th.gif) repeat-x 0 0;
@@ -313,12 +402,13 @@ h3 a {
 }
 
 .checked_delete {
-    margin-left: 9px;
+    margin-top: 0px;
+    margin-left: -13px;
 }
 
 .pagging {
-    height: 20px;
-    padding: 8px 10px;
+    height: 32px;
+    padding: 6px 10px;
     line-height: 19px;
     color: #949494;
 }

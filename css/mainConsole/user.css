@@ -51,3 +51,9 @@
     float: left;
     padding: 3px 25px;
 }
+
+.point_page {
+    width: 40px;
+    border-radius: 6px;
+    margin-left: 9px;
+}

@@ -1,7 +1,7 @@
 var userList = null;
 var roleList = null;
 //查询系统用户
-function searchUsers() {
+function searchUsers(page, size) {
     var uId = $("#query_uId").val();
     var nickName = $("#query_nickName").val();
     var mobilePhone = $("#query_mobilePhone").val();
@@ -23,8 +23,8 @@ function searchUsers() {
         "type": type,
         "startTime": checkBlank(startTime),
         "endTime": checkBlank(endTime),
-        "page": 0,
-        "size": 10,
+        "page": page == null ? 0 : page,
+        "size": size == null ? 10 : size,
         "lastId": null,
         "orderBy": 0
     });
@@ -40,10 +40,54 @@ function searchUsers() {
             if (data.code == 200) {
                 userList = data.data.list;
                 addTrUser(userList);
+                //设置分页标识
+                $(".pagging").html(null);
+                var currentPage = data.data.currentPage;
+                var totalPage = data.data.totalPage;
+                setPaddingHtml(currentPage, totalPage);
             }
         }
     });
 }
+
+function setPaddingHtml(currentPage, totalPage) {
+    var paddingHtml = "<div class='left checked_delete'><a href='#'>删除</a>     #" + (currentPage + 1) + "-" + totalPage + " </div>" +
+        "<div class='right'>";
+    if (totalPage <= 5) {
+        for (let index = 0; index < totalPage; index++) {
+            if (currentPage != index) {
+                paddingHtml += "<a onclick = searchUsers(" + index + ")>" + (index + 1) + "</a>";
+            }
+        }
+    } else {
+        if (currentPage != 0) {
+            paddingHtml += "<a onclick = searchUsers(" + (currentPage - 1) + ")>Previous</a>";
+        }
+        for (let index = currentPage + 1; index < (currentPage + 5); index++) {
+            if (index < totalPage) {
+                paddingHtml += "<a onclick = searchUsers(" + index + ")>" + (index + 1) + "</a>";
+            }
+        }
+        paddingHtml += "<span>...</span>";
+        paddingHtml += "<a onclick = searchUsers(" + (totalPage - 1) + ")>" + totalPage + "</a>";
+        if (currentPage != (totalPage - 1)) {
+            paddingHtml += "<a onclick = searchUsers(" + (currentPage + 1) + ")>Next</a>";
+        }
+    }
+    paddingHtml += " <input type='text' class='point_page'>  <a onclick = goPointPageSearch(" + currentPage + "," + totalPage + ")>GO</a> </div>"
+    $(".pagging").append(paddingHtml);
+}
+
+function goPointPageSearch(currentPage, totalPage) {
+    var pageNum = $(".point_page").val();
+    var reg = /^[0-9]+.?[0-9]*$/;
+    if (!reg.test(pageNum) || pageNum < 1 || pageNum > totalPage) {
+        selfAlter("请输入1~" + totalPage + "之间的数字")
+    }
+    searchUsers(pageNum - 1, 10);
+}
+
+
 
 // 查询系统存在的权限
 function searchRoles() {
@@ -100,8 +144,9 @@ function register() {
         data: datas,
         success: function(data) {
             if (data.code == 200) {
-                var userList = data.data.list;
-                addTrUser(userList);
+                selfAlter(data.message, 1);
+                $(".modal").modal('hide');
+                $('.modal-backdrop').remove(); //去掉遮罩层
                 searchUsers();
             }
         }
@@ -153,7 +198,6 @@ function update() {
         success: function(data) {
             if (data.code == 200) {
                 selfAlter(data.message, 1);
-                // $(".modal").css('display', 'none');
                 $(".modal").modal('hide');
                 $('.modal-backdrop').remove(); //去掉遮罩层
                 searchUsers();
@@ -164,16 +208,38 @@ function update() {
 }
 
 
+function deleteUser(uId) {
+    var uid = uId.toString();
+    $.ajax({
+        type: 'POST',
+        url: HOST + "user/delete/" + uid,
+        contentType: "application/json;charset=UTF-8",
+        cache: false,
+        success: function(data) {
+            if (data.code == 200) {
+                selfAlter(data.message, 1);
+                searchUsers();
+            }
+        }
+    });
+
+}
+
 
 // 创建表格 ，表格插入数据加在头还是尾巴的问题  https://zhidao.baidu.com/question/134554535438055125.html
 function addTrUser(userList) {
     // 拿到table的div块
-    var tableDiv = $("#content").children(".box").children(".table");
+    var tableDiv = $("#content").children(".box").find(".table");
+    //拿到div块下的table-id块
+    var userIdTable = tableDiv.find("#table-users-id");
     //拿到div块下的table块
     var userTable = tableDiv.find("#table-users");
+    //拿到div块下的table-operate块
+    var userOperateTable = tableDiv.find("#table-users-operate");
     // 清空表格块原有数据（表头保存）
+    $("#table-users-id  tr:not(:first)").remove();
     $("#table-users  tr:not(:first)").remove();
-
+    $("#table-users-operate  tr:not(:first)").remove();
     for (let index = 0; index < userList.length; index++) {
         var userInfo = userList[index];
         var sex;
@@ -224,21 +290,22 @@ function addTrUser(userList) {
             default:
                 status = "/";
         }
-        var userTr = "<tr><th width='13'><input type='checkbox' class='checkbox' /></th>" +
-            "<th>" + index + "</th>" +
-            "<th>" + userInfo.uId + "</th>" +
-            "<th>" + userInfo.nickName + "</th>" +
-            "<th>" + userInfo.loginName + "</th>" +
-            "<th>" + userInfo.mobilePhone + "</th>" +
-            "<th>" + userInfo.email + "</th>" +
-            "<th>" + sex + "</th>" +
-            "<th>" + status + "</th>" +
-            "<th>" + type + "</th>" +
-            "<th>" + userInfo.grade + "</th>" +
-            "<th>" + userInfo.createTime + "</th>" +
-            "<th> <a class='ico del'></a>" +
-            "<a class='ico edit' data-toggle='modal' data-target='#myModal' onclick='modelHtml(1," + index + ")'></a></th></tr>";
+        var userTr = "<tr><th id='tr_user_2' >" + userInfo.uId + "</th>" +
+            "<th id='tr_user_3' >" + userInfo.nickName + "</th>" +
+            "<th id='tr_user_4' >" + userInfo.loginName + "</th>" +
+            "<th id='tr_user_5' >" + userInfo.mobilePhone + "</th>" +
+            "<th id='tr_user_6' >" + userInfo.email + "</th>" +
+            "<th id='tr_user_7' >" + sex + "</th>" +
+            "<th id='tr_user_8' >" + status + "</th>" +
+            "<th id='tr_user_9' >" + type + "</th>" +
+            "<th id='tr_user_10' >" + userInfo.grade + "</th>" +
+            "<th id='tr_user_11' >" + userInfo.createTime + "</th></tr>";
         userTable.append(userTr);
+
+        userIdTable.append("<tr><th id='tr_user_0' width='13'><input type='checkbox' class='checkbox' /></th>" +
+            "<th id='tr_user_1' >" + (index + 1) + "</th></tr>");
+        userOperateTable.append("<tr><th id='tr_user_12' > <a class='ico del' onclick=deleteUser('" + userInfo.uId + "')></a>" +
+            "<a class='ico edit' data-toggle='modal' data-target='#myModal' onclick='modelHtml(1," + index + ")'></a></th></tr>");
     }
 
 }
@@ -258,6 +325,22 @@ function getCheckBox(checkName) {
             check_val.push(parseInt(obj[k].value));
     }
     return check_val
+}
+
+var isCheckAll = false;
+
+function swapCheck() {
+    if (isCheckAll) {
+        $(".checkbox").each(function() {
+            this.checked = false;
+        });
+        isCheckAll = false;
+    } else {
+        $(".checkbox").each(function() {
+            this.checked = true;
+        });
+        isCheckAll = true;
+    }
 }
 
 // 弹出注册/修改用户的输入页面

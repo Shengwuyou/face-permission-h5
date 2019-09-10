@@ -1,3 +1,13 @@
+//ready 表示初始化加载
+$(document).ready(function() {
+    //回车提交事件
+    $("body").bind('keydown', function(event) {
+        if (event.keyCode == 13) {
+            login();
+        }
+    });
+});
+
 
 function login() {
 
@@ -10,27 +20,27 @@ function login() {
         "platform": 'pc',
         "fromWay": 0
     });
-    
+
     $.ajax({
-        type:'POST',
-        url:HOST + "user/login",
-        contentType:"application/json;charset=UTF-8",
-        cache:false,
-        dataType:'json',
+        type: 'POST',
+        url: HOST + "user/login",
+        contentType: "application/json;charset=UTF-8",
+        cache: false,
+        dataType: 'json',
         data: datas,
-        success: function (data) {
-            if(data.code == 200){
+        success: function(data) {
+            if (data.code == 200) {
                 selfAlter("登陆成功,正在跳转");
-                foowwLocalStorage.set("token", data.data.token, date + 1000*60*5 );
-                foowwLocalStorage.set("nickName", data.data.nickName, date + 1000*60*5);
-                window.location.href="/html/mainConsole.html";
-            }else{
+                foowwLocalStorage.set("token", data.data.token, date + 1000 * 60 * 5);
+                foowwLocalStorage.set("nickName", data.data.nickName, date + 1000 * 60 * 5);
+                window.location.href = "/html/mainConsole.html";
+            } else {
                 selfAlter(data.message);
             }
-            
+
         },
-        error: function () {
+        error: function() {
             selfAlter("error!!!!")
         }
     });
-}
+};

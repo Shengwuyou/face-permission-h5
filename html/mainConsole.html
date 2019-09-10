@@ -165,47 +165,42 @@
                         <!-- End Box Head -->
 
                         <!-- Table信息展示 -->
-                        <div class="table">
-                            <table id='table-users' width="100%" cellspacing="0" cellpadding="0" border="0">
-                                <tr>
-                                    <th width="13"><input type="checkbox" class="checkbox" /></th>
-                                    <th>序号</th>
-                                    <th>用户Id</th>
-                                    <th>昵称</th>
-                                    <th>登陆名</th>
-                                    <th>手机号</th>
-                                    <th>email</th>
-                                    <th>sex</th>
-                                    <th>状态</th>
-                                    <th>类型</th>
-                                    <th>等级</th>
-                                    <th>创建时间</th>
-                                    <th width="40" class="ac">操作</th>
-                                </tr>
-                            </table>
-                            <div class="checked_delete">
-                                <a href="#">删除☑️</a>
+                        <div class="table-box">
+                            <div class="table">
+                                <!-- 序号固定栏 -->
+                                <table id='table-users-id' cellspacing="0" cellpadding="0" border="0">
+                                    <tr>
+                                        <th id='tr_user_0' width="13"><input type="checkbox" class="checkbox" onclick="swapCheck()" /></th>
+                                        <th id='tr_user_1'>序号</th>
+                                    </tr>
+                                </table>
+                                <table id='table-users' cellspacing="0" cellpadding="0" border="0">
+                                    <tr>
+                                        <th id='tr_user_2'>用户Id</th>
+                                        <th id='tr_user_3'>昵称</th>
+                                        <th id='tr_user_4'>登陆名</th>
+                                        <th id='tr_user_5'>手机号</th>
+                                        <th id='tr_user_6'>email</th>
+                                        <th id='tr_user_7'>sex</th>
+                                        <th id='tr_user_8'>状态</th>
+                                        <th id='tr_user_9'>类型</th>
+                                        <th id='tr_user_10'>等级</th>
+                                        <th id='tr_user_11'>创建时间</th>
+                                    </tr>
+                                </table>
+                                <!-- 操作标记固定栏 -->
+                                <table id='table-users-operate' cellspacing="0" cellpadding="0" border="0">
+                                    <tr>
+                                        <th id='tr_user_12' width="40" class="ac">操作</th>
+                                    </tr>
+                                </table>
                             </div>
-                            <!-- Pagging -->
-                            <div class="pagging">
-                                <div class="left">Showing 1-12 of 44</div>
-                                <div class="right">
-                                    <a href="#">Previous</a>
-                                    <a href="#">1</a>
-                                    <a href="#">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">245</a>
-                                    <span>...</span>
-                                    <a href="#">Next</a>
-                                    <a href="#">View all</a>
-                                </div>
-                            </div>
-                            <!-- End Pagging -->
-
                         </div>
                         <!-- Table -->
 
+                        <!-- Pagging -->
+                        <div class="pagging"></div>
+                        <!-- End Pagging -->
                     </div>
                     <!-- End Box -->
 
